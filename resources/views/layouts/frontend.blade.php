@@ -8,11 +8,14 @@
     <meta name="keywords" content="BTT Give">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" href="/images/logo.png" type="image/x-icon">
+    <link rel="icon" href="/images/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="/css/app.css" />
     @livewireStyles
 </head>
 <body class="main">
+    @include('includes.frontend.mobile-menu')
+    @include('includes.frontend.top-bar')
+    @include('includes.frontend.top-nav')
     @yield('content')
 
     @livewireScripts

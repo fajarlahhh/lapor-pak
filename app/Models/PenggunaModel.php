@@ -7,23 +7,25 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class Member extends Authenticatable
+class PenggunaModel extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $table = 'member';
+    protected $table = 'pengguna';
 
     protected $fillable = [
-        'username',
-        'password',
+        'uid',
+        'kata_sandi',
         'name',
-        'email',
-        'phone',
     ];
-
 
     protected $hidden = [
-        'password',
+        'kata_sandi',
         'remember_token',
     ];
+
+    public function getAuthPassword()
+    {
+        return $this->kata_sandi;
+    }
 }

@@ -4,52 +4,29 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
-use Lukeraymonddowning\Honey\Traits\WithRecaptcha;
+use Illuminate\Support\Facades\Hash;
 
 class Login extends Component
 {
-    use WithRecaptcha;
 
-    public $username, $password, $referral_token, $remember = false;
+    public $uid, $kata_sandi, $referral_token, $remember = false;
     public $message;
 
     protected $rules = [
-        'username' => 'required',
-        'password' => 'required',
+        'uid' => 'required',
+        'kata_sandi' => 'required',
     ];
 
     public function login()
     {
         $this->validate();
 
-        // if($this->recaptchaPasses() === false){
-        //     $this->notification = [
-        //         'tipe' => 'danger',
-        //         'pesan' => '<li>Recaptcha Failed</li>'
-        //     ];
-        //     return;
-        // }
-        // $member = Member::where('username', $this->username)->get();
-        // if($member){
-        //     $member = $member->first();
-        //     $wd_total = TransactionExchange::select('transaction_exchange_amount')->where('transaction_exchange_type', 'Reward')->where('member_id', $member->member_id)->get()->sum('transaction_exchange_amount');
-        //     if(($member->contract_price * 3) - $wd_total < $member->contract->contract_reward_exchange_min){
-        //         $member = Member::findOrFail($member->member_id);
-        //         $member->due_date = Carbon::now()->addDays(5)->format('Y-m-d');
-        //         $member->save();
-        //     }
-        // }else{
-		// 	$this->notification = [
-		// 		'tipe' => 'danger',
-		// 		'pesan' => '<li><strong>Sign In notification!!!</strong><br>Wrong username or password</li>'
-		// 	];
-		// }
         $remember = $this->remember == 'on';
-        if (Auth::attempt(['username' => $this->username, 'password' => $this->password], $remember)) {
-            Auth::logoutOtherDevices($this->password, 'password');
-            return redirect()->intended('dashboard');
+        if (Auth::attempt(['uid' => $this->uid, 'password' => $this->kata_sandi], $remember)) {
+            Auth::logoutOtherDevices($this->kata_sandi, 'kata_sandi');
+            return redirect()->intended('backend');
         }
-        $this->message = "<p class='text-theme-6'>Wrong username or password!!!</p>";
+        $this->message = "<p class='text-theme-6'>UID atau Kata Sandi Salah!!!</p>";
         return;
     }
 

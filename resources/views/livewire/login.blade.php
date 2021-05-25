@@ -4,7 +4,7 @@
         <div class="hidden xl:flex flex-col min-h-screen">
             <a href="" class="-intro-x flex items-center pt-5">
                 <img alt="BTT Give" class="w-6" src="/images/logo.png">
-                <span class="text-white text-lg ml-3"> BTT<span class="font-medium">Give</span> </span>
+                <span class="text-white text-lg ml-3"> Lapor<span class="font-medium">Pak</span> </span>
             </a>
             <div class="my-auto">
                 <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
@@ -25,15 +25,14 @@
                     </h2>
                     <div class="intro-x mt-2 text-gray-500 xl:hidden text-center">A few more clicks to sign in to your account. Manage all your accounts in one place</div>
                     <div class="intro-x mt-8">
-                        <input type="text" class="intro-x login__input form-control py-3 px-4 border-gray-300 block" placeholder="Username" wire:model="username" required>
-                        <input type="password" class="intro-x login__input form-control py-3 px-4 border-gray-300 block mt-4" placeholder="Password" wire:model="password" required>
+                        <input type="text" class="intro-x login__input form-control py-3 px-4 border-gray-300 block" placeholder="UID" wire:model="uid" required>
+                        <input type="password" class="intro-x login__input form-control py-3 px-4 border-gray-300 block mt-4" placeholder="Kata Sandi" wire:model="kata_sandi" required>
                     </div>
                     <div class="intro-x flex text-gray-700 dark:text-gray-600 text-xs sm:text-sm mt-4">
                         <div class="flex items-center mr-auto">
                             <input id="remember-me" type="checkbox" class="form-check-input border mr-2" wire:model="remember">
                             <label class="cursor-pointer select-none" for="remember-me">Remember me</label>
                         </div>
-                        <a href="">Forgot Password?</a>
                     </div>
                     <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
                         <button class="btn btn-primary py-3 px-4 w-full xl:w-32 xl:mr-3 align-top">Login</button>

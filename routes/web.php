@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => ['auth']], function () {
-    Route::get('/', \App\Http\Livewire\Dashboard::class);
-    Route::get('/dashboard', \App\Http\Livewire\Dashboard::class);
-});
+Route::get('/', \App\Http\Livewire\Frontend\Home::class);
 
-Route::get('/registration', \App\Http\Livewire\Registration::class);
+Route::group(['middleware' => ['auth']], function () {
+    Route::prefix('backend')->group(function () {
+        Route::get('/', \App\Http\Livewire\Backend\Dashboard::class);
+        Route::get('/dashboard', \App\Http\Livewire\Backend\Dashboard::class);
+        Route::get('/pegawai', \App\Http\Livewire\Backend\Pegawai::class);
+    });
+});
